@@ -1,3 +1,18 @@
+GIT
+  remote: https://github.com/eventmachine/eventmachine
+  revision: 487305151d1f5441b597400fa8d062361e2d86b2
+  specs:
+    eventmachine (1.0.4)
+
+GIT
+  remote: https://github.com/whitetrefoil/middleman-deploy
+  revision: e332e091c705ee8d8c882271fc89b732c5ddce7a
+  specs:
+    middleman-deploy (0.2.3)
+      middleman-core (>= 3.0.0)
+      net-sftp
+      ptools
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -30,7 +45,6 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
-    eventmachine (1.0.4)
     execjs (2.2.2)
     ffi (1.9.6-x64-mingw32)
     haml (4.0.6)
@@ -82,12 +96,16 @@ GEM
       sprockets-sass (~> 1.3.0)
     minitest (5.5.0)
     multi_json (1.10.1)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.1)
     padrino-helpers (0.12.4)
       i18n (~> 0.6, >= 0.6.7)
       padrino-support (= 0.12.4)
       tilt (~> 1.4.1)
     padrino-support (0.12.4)
       activesupport (>= 3.1)
+    ptools (1.3.2)
     rack (1.6.0)
     rack-livereload (0.3.15)
       rack
@@ -114,16 +132,21 @@ GEM
       hitimes
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2014.10)
+      tzinfo (>= 1.0.0)
     uber (0.0.11)
     uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    wdm (0.1.0)
 
 PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  eventmachine!
   middleman (~> 3.3.7)
+  middleman-deploy!
   middleman-livereload (~> 3.1.0)
   tzinfo-data
   wdm (~> 0.1.0)
