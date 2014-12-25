@@ -79,3 +79,6 @@ activate :deploy do |deploy|
   deploy.method = :git
   deploy.branch = 'gh-pages'
 end
+
+# 相対リンク生成の有効化
+set :relative_links, true
