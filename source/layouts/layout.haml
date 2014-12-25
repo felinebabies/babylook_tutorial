@@ -14,9 +14,11 @@
     = stylesheet_link_tag "style.css"
   %body
     = yield
-    %ul.localNavigation
-      %li
-        %a{:href => "./"} 戻る
+
+    - if !current_page.data.isSiteTop then
+      %ul.localNavigation
+        %li
+          = link_to "トップページに戻る", "index.html"
     / ========================================
     %h2.site 案内
     %h3.navigationTitle メインナビゲーション
