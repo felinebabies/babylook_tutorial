@@ -1,0 +1,846 @@
+@charset "UTF-8";
+@media screen
+{
+/*
+* 【注意】
+* IE6は管理の都合上スターハックで対応、子セレクタハックは使わない。
+* デザイン変更の際はスターハックの部分を削除すること。
+*/
+
+/*
+* 作成者: 坂取
+* URI: http://az-store.nrym.org/
+* テーマ: AZ store七代目スタイル（2009年3月6日作成）。
+*
+* 文字色：color＿＿＿_#333333
+* 背景色：background＿#fafafa
+* リンク色：link＿＿＿#2b51db
+* 　　　　：visited＿_#a75aa6
+* 　　　　：hover＿＿_#f37497
+*
+* 01. Structure Module
+* 02. Text Module
+* 03. Hypertext Module
+* 04. List Module
+* 05. Edit Module
+* 06. Forms Module
+* 07. Tables Module
+* 08. Image Module
+* 09. Object Module
+* 10. Presentation Module
+* 11. デザインその他
+*/
+/* ======================================== */
+/* 01. Structure Module */
+/* ======================================== */
+html
+	{
+	background: #fafafa;
+	margin: 0;
+	padding: 0;
+	}
+body
+	{
+	background: #ffffff url("<%= image_path "body.gif" %>") repeat-y 100% 0;
+	color: #333333;
+	font-size: 100%;
+	line-height: 1.8;
+	margin: 0 auto 2em;
+	max-width: 850px;
+	padding: 0;
+	position: relative;
+	}
+
+html>body
+	{
+	border: 1px solid #cccccc;
+	margin-top: 5em; /* IE6だと余白がおかしい */
+	padding: 0;
+	}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+	{
+	line-height: 1.1;
+	font-size: 105%;
+	font-weight: 700;
+	margin: 1.5em 200px 0.5em 20px;
+	/* ↓「@media all」に上書きするために必要 */
+	background: transparent;
+	color: #e2757a;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	padding: 0.1em 0;
+	}
+	/* 一般 */
+address,
+blockquote,
+p,
+pre,
+ul,
+ol,
+dl,
+form,
+table,
+object,
+embed
+	{
+	margin: 1.25em 200px 1.25em 20px;
+	/* ↓「@media all」に上書きするために必要 */
+	padding: 0;
+	}
+	/* body直下のinsとdelはブロックレベル要素扱いにする */
+body>del,
+body>ins
+	{
+	display: block;
+	margin: 1.25em 200px 1.25em 20px;
+	padding: 0;
+	}
+/* ======================================== */
+/* 02. Text Module */
+/* ======================================== */
+	/* 見出しリンクを太字にする */
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a
+	{
+	font-weight: 700;
+	}
+h1
+	{
+	background: url("<%= image_path "h1.gif" %>") no-repeat left center;
+	font-size: 125%;
+	padding-left: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	}
+h2
+	{
+	background: url("<%= image_path "heading.gif" %>") repeat-x left bottom;
+	padding-bottom: 5px;
+	}
+h3
+	{
+	background: url("<%= image_path "heading.gif" %>") no-repeat -330px center;
+	padding-left: 25px;
+
+	}
+h4
+	{
+	background: url("<%= image_path "heading.gif" %>") no-repeat -335px center;
+	padding-left: 20px;
+	}
+h5
+	{
+	background: url("<%= image_path "heading.gif" %>") no-repeat -340px center;
+	padding-left: 15px;
+	}
+h6
+	{
+	background: url("<%= image_path "heading.gif" %>") no-repeat -345px center;
+	padding-left: 10px;
+	}
+/* ==================== */
+/* ブロックレベル要素 */
+/* ==================== */
+	/* アドレス */
+address
+	{
+	font-style: normal;
+	}
+	 /* 引用 */
+blockquote
+	{
+	padding: 0.5em;
+	margin-left: 3em;
+	border-top: 3px dotted #cccccc;
+	border-bottom: 3px dotted #cccccc;
+	}
+			/* blockquote内の要素余白（IE6） */
+		blockquote p,
+		blockquote dl,
+		blockquote ol,
+		blockquote ul
+			{
+			margin: 0 0.25em;
+			padding: 0;
+			}
+				blockquote ol li,
+				blockquote ul li
+					{
+					margin-left: 1.5em;
+					}
+			/* blockquote内の要素余白（IE6以外のモダンブラウザ一括） */
+		blockquote>*
+			{
+			margin: 0 0.25em;
+			padding: 0;
+			}
+			/* 引用元タイトル表示 */
+		blockquote[title]::before
+			{
+			display: block;
+			content: attr(title);
+			font-weight: 700;
+			margin: 0 0 0.25em 0;
+			padding: 0.25em;
+			line-height: 1.1;
+			}
+			/* 引用元URI表示 */
+		blockquote[cite]::after
+			{
+			display: block;
+			content: attr(cite);
+			padding: 0.25em;
+			margin: 0.25em 0 0 0;
+			text-align: right;
+			line-height: 1.1;
+			white-space: -moz-pre-wrap; /* Mozilla */
+			white-space: -pre-wrap;     /* Opera 4-6 */
+			white-space: -o-pre-wrap;   /* Opera 7 */
+			white-space: pre-wrap;      /* CSS3 */
+			word-wrap: break-word;      /* IE 5.5+ */
+			}
+					/* Opera専用 */
+				blockquote[cite^="http://"],
+				q[cite^="http://"]
+					{
+					-o-link: attr(cite);
+					-o-link-source: current;
+					}
+	/* 段落 */
+p
+	{
+	}
+	/* 整形文 */
+pre
+	{
+	padding: 0.5em;
+	background: #eeeeee;
+	width: 100%;
+	overflow: scroll;
+	color: #333333;
+	}
+	/* WinIE6以外のモダンブラウザに適応 */
+body>pre
+	{
+	width: auto;
+	overflow: auto;
+	}
+		pre code
+			{
+			border: none;
+			margin: 0;
+			padding: 0;
+			}
+		pre code strong
+			{
+			background: #cccccc;
+			}
+/* ==================== */
+/* インライン要素 */
+/* ==================== */
+	/* 略語 */
+abbr
+	{
+	border-bottom: 1px dotted #333333;
+	}
+	/* 引用元 */
+cite
+	{
+	font-style: normal;
+	font-weight: 700;
+	}
+	/* コード */
+code
+	{
+	font-family: monospace;
+	background: #eeeeee;
+	margin: 0 0.25em;
+	padding: 0.1em 0.25em;
+	}
+	/* 定義語 */
+dfn
+	{
+	font-weight: 700;
+	font-style: normal;
+	}
+		dfn:before
+			{
+			content:"\3010";
+			}
+		dfn:after
+			{
+			content:"\3011";
+			}
+	/* 強調（文脈において語句の持つ通常一般の意味とは違う） */
+em
+	{
+	font-weight: 700;
+	font-style: normal;
+	}
+	/* キーボード */
+kbd
+	{
+	margin: 0 0.25em;
+	padding: 0.1em 0.25em;
+	border-style: solid;
+	border-width: 1px 2px 2px 1px;
+	background: #ffffff;
+	border-color: #eeeeee #cccccc #cccccc #eeeeee;
+	}
+	/* 引用 */
+q
+	{
+	quotes: "\300c" "\300d" "\300e" "\300f";
+	background: #ffffff;
+	border: 1px dotted #cccccc;
+	margin: 0 0.25em;
+	padding: 1px;
+	}
+		q:before
+			{
+			content: open-quote;
+			}
+		q:after
+			{
+			content: close-quote;
+			}
+q q
+	{
+	margin: 0;
+	padding: 0;
+	border: none;
+	}
+	/* プログラムの出力例 */
+samp
+	{
+	margin: 0 0.25em;
+	padding: 0.1em 0.25em;
+	border: 1px dotted #eeeeee;
+	}
+	/* 強調 */
+strong
+	{
+	font-weight: 700;
+	}
+			/* より強調 */
+		strong strong
+			{
+			color: #990000;
+			}
+	/* 変数 */
+var
+	{
+	font-family: monospace;
+	}
+/* ==================== */
+/* 03. Hypertext Module */
+/* ==================== */
+a
+	{
+	text-decoration: underline;
+	}
+a:link
+	{
+	color: #2b51db;
+	}
+a:visited
+	{
+	color: #a75aa6;
+	}
+a:hover
+	{
+	color: #f37497;
+	}
+/* ==================== */
+/* 04. List Module */
+/* ==================== */
+	/* 定義リスト */
+	/* WinIE6のみwidth99％を適応（border消失・ちらつき防止） */
+* html dl
+	{
+	width: 99%;
+	}
+		dt
+			{
+			font-weight: 700;
+			}
+		dt a
+			{
+			font-weight: 700;
+			}
+		dd
+			{
+			margin: 0 0 1px 0.5em;
+			padding: 0 0 0 0.5em;
+			border-left: solid 5px #eeeeee;
+			}
+					/* 定義型リストの中のリスト（余白調整） */
+				dd dl,
+				dd ul,
+				dd ol,
+				dd p,
+				dl form
+					{
+					margin: 0;
+					padding: 0;
+					}
+				dd ul li,
+				dd ol li
+					{
+					margin: 0 0 0 1.5em;
+					}
+	/* 番号つきリスト・同不順リスト */
+	/* リスト */
+ul,
+ol
+	{
+	padding: 0.5em 0;
+	}
+			/* リストマーク（黒丸） */
+		ul li
+			{
+			list-style-type: disc;
+			margin-left: 2em;
+			}
+		ol li
+			{
+			list-style-type: decimal;
+			margin-left: 2em;
+			}
+					/* リストの中のリスト（余白調整） */
+				ul ul,
+				ul ol,
+				ul p
+					{
+					margin: 0 0 0 2em;
+					padding: 0;
+					}
+				ul ul li
+					{
+					margin: 0;
+					padding: 0;
+					list-style-type: circle;
+					}
+				ul ol li
+					{
+					margin: 0;
+					padding: 0;
+					list-style-type: lower-roman;
+					}
+/* ==================== */
+/* 05. Edit Module */
+/* ==================== */
+	/* 削除・挿入 */
+body>*>del,
+body>*>ins
+	{
+	margin: 0;
+	padding: 0;
+	}
+	/* 削除 */
+del
+	{
+	text-decoration: line-through;
+	color: #999999;
+	}
+	/* 追加 */
+ins
+	{
+	text-decoration: none;
+	color: #999999;
+	}
+body>del>*
+	{
+	margin: 0;
+	padding: 0;
+	width: auto;
+	}
+body>ins>*
+	{
+	margin: 0;
+	padding: 0;
+	width: auto;
+	}
+/* ==================== */
+/* 06. Forms Modules */
+/* ==================== */
+fieldset
+	{
+	border: none;
+	}
+legend
+	{
+	padding: 0 1em;
+	border: none;
+	display: none;
+	}
+input,
+textarea,
+select
+	{
+	padding: 1px;
+	color: #333333;
+	background: #ffffff;
+	border: 1px solid #cccccc;
+	line-height: 1.2;
+	}
+textarea
+	{
+	}
+	/* inputの幅 */
+input[type="text"]
+	{
+	width: 10em;
+	}
+	/* 送信ボタン */
+input[type="submit"]
+	{
+	background: #cccccc;
+	}
+/* ==================== */
+/* 07. Table Modules */
+/* ==================== */
+	/* 表 */
+table
+	{
+	color: #333333;
+	border: 1px solid #cccccc;
+	border-spacing: 1px;
+	line-height: 1.8;
+	}
+		caption
+			{
+			font-weight: 700;
+			text-align: center;
+			}
+		th,
+		td
+			{
+			padding: 0.25em 0.5em;
+			}
+		th
+			{
+			text-align: center;
+			font-weight: 700;
+			border: 1px solid #cccccc;
+			background: #eeeeee;
+			}
+		td
+			{
+			border: 1px solid #cccccc;
+			background: #ffffff;
+			text-align: left;
+			}
+/* ==================== */
+/* 08. Image Module */
+/* ==================== */
+img
+	{
+	margin: 1px;
+	padding: 0;
+	border: 1px solid #333333;
+	}
+		a:link img
+			{
+			border: 1px solid #2b51db;
+			}
+		a:visited img
+			{
+			border: 1px solid #a75aa6;
+			}
+		a:hover img
+			{
+			border: 1px solid #f37497;
+			}
+/* ==================== */
+/* 09. Object Module */
+/* ==================== */
+object,
+embed
+	{
+	}
+/* ==================== */
+/* 10. Presentation Module */
+/* ==================== */
+	/* 太字 */
+b
+	{
+	font-weight: 700;
+	}
+	/* 文字(大) */
+big
+	{
+	font-size: 120%;
+	}
+	/* 水平線 */
+hr
+	{
+	display: none;
+	}
+	/* 斜体 */
+i
+	{
+	font-style: oblique;
+	}
+	/* 文字(小) */
+small
+	{
+	font-size: 80%;
+	}
+	/* 上つき文字 */
+sup
+	{
+	font-size: 80%;
+	vertical-align: super;
+	}
+	/* 下つき文字 */
+sub
+	{
+	font-size: 80%;
+	vertical-align: sub;
+	}
+	/* 等幅 */
+tt
+	{
+	font-family: monospace;
+	}
+/* ==================== */
+/* 11. Original class & id */
+/* ==================== */
+	/* 非表示 */
+h2.site,
+h3.navigationTitle
+	{
+	display: none;
+	}
+	/* メインナビゲーション */
+ul.globalNavigation
+	{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 160px;
+	margin: 0;
+	padding: 0;
+	padding-top: 190px;
+	background: url("<%= image_path "gn.gif" %>") no-repeat left top;
+	}
+		ul.globalNavigation li
+			{
+			list-style: none;
+			margin: 0;
+			padding: 0.25em 0 0.25em 0.5em;
+			border-bottom: 1px solid #cccccc;
+			max-height: 1.75em;
+			}
+		ul.globalNavigation li a
+			{
+			text-decoration: none;
+			}
+		ul.globalNavigation li a:link,
+		ul.globalNavigation li a:visited
+			{
+			color: #333333;
+			}
+		ul.globalNavigation li a:hover
+			{
+			color: #333333;
+			}
+ul.globalNavigation li ul
+	{
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: 12em;
+	position: relative;
+	z-index: 3;
+	}
+ul.globalNavigation li ul li
+	{
+	width: 100%;
+	border-right: none;
+	}
+ul.globalNavigation li ul li a
+	{
+	text-align: center;
+	}
+ul.globalNavigation li:hover ul
+	{
+	display: block;
+	position: relative;
+	z-index: 3;
+	top: -2em;
+	left: -12.75em;
+	}
+ul.globalNavigation li:hover ul li
+	{
+	width: 100%;
+	text-align: center;
+	background: #cccccc;
+	border-bottom: 1px solid #ffffff;
+	}
+	/* ==================== */
+	/* サブナビゲーション（index・blogにのみ使う） */
+	/* ==================== */
+	/* サブナビゲーション */
+	/* 個別とページのみ適応 */
+dl.localNavigation
+	{
+	margin-top: 4em;
+	}
+		dl.localNavigation dt
+			{
+			border: 1px solid #cccccc;
+			background: #eeeeee;
+			margin-bottom: 2px;
+			padding: 0.1em 0.25em;
+			}
+		dl.localNavigation dd
+			{
+			border: 1px solid #cccccc;
+			margin-bottom: 2px;
+			margin-left: 0;
+			padding: 0.1em 0.25em;
+			}
+		dl.localNavigation dd.archive
+			{
+			height: 5em;
+			overflow: auto;
+			}
+		dl.localNavigation>dd.archive
+			{
+			height: auto;
+			max-height: 10em;
+			}
+input[name="s"]
+	{
+	width: 10em;
+	line-height: 1.0;
+	padding: 1px;
+	}
+	/* ブログのページナビゲーション */
+p.localNavigation
+	{
+	text-align: right;
+	padding: 1.5em 0;
+	line-height: 2.5;
+	}
+		p.localNavigation span.current
+			{
+			padding: 2px 3px;
+			margin: 1.5em 0.25em;
+			border-top: none;
+			border-right: none;
+			border-left: none;
+			border-bottom: 1px solid;
+			}
+		p.localNavigation a
+			{
+			padding: 0.1em 0.5em;
+			margin: 1.5em 0.25em;
+			border: 1px solid;
+			text-decoration: none;
+			}
+		p.localNavigation a.prev,
+		p.localNavigation a.next
+			{
+			border: none;
+			text-decoration: underline;
+			}
+		/* 普通のページの「戻る」 */
+ul.localNavigation
+	{
+	text-align: right;
+	padding: 1.5em 0;
+	line-height: 2.5;
+	}
+		ul.localNavigation li
+			{
+			display: inline;
+			margin: 0;
+			}
+		ul.localNavigation a
+			{
+			padding: 0.1em 0.5em;
+			margin: 1.5em 0.25em;
+			border: 1px solid;
+			text-decoration: none;
+			}
+	/* 横並びリスト */
+ul.text
+	{
+	list-style-type: none;
+	}
+		ul.text li
+			{
+			display: inline;
+			border-right: solid 1px;
+			margin:0 10px 0 0;
+			padding:0 5px 0 0;
+			}
+		ul.text>li
+			{
+			border: none;
+			margin: 0;
+			padding: 0;
+			}
+		ul.text li+li
+			{
+			border-left: solid 1px;
+			margin: 0 0 0 6px;
+			padding: 0 0 0 10px;
+			}
+		li ul.text
+			{
+			display: inline;
+			}
+	/* サイト情報 */
+dl.information
+	{
+	min-height: 1px;
+	border: none;
+	background: transparent;
+	border: none;
+	}
+			/* IE6 */
+		* html dl.information
+			{
+			height: 1%;
+			}
+		dl.information dt
+			{
+			margin: 0;
+			margin-right: -6em;
+			padding: 0.2em 0;
+			float: left;
+			clear: both;
+			display: inline;
+			width: 7em;
+			text-indent: 10px;
+			background-image: none;
+			border: none;
+			}
+		dl.information dd
+			{
+			margin-left: 7em;
+			padding: 0.2em 10px;
+			border: none;
+			}
+		dl.information::after
+			{
+			height: 0;
+			visibility: hidden;
+			content: ".";
+			display: block;
+			clear: both;
+			}
+/* ↓必ず残すこと（@media） */
+}

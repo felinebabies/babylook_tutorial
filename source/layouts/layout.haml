@@ -1,0 +1,39 @@
+!!!
+!!! XML
+%html{:dir => "ltr", :lang => "ja", "xml:lang" => "ja", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "content-type"}/
+    %meta{:content => "text/css", "http-equiv" => "content-style-type"}/
+    %meta{:content => "text/javascript", "http-equiv" => "content-script-type"}/
+    %title #{current_page.data.title || "べびーるっくチュートリアル"}
+    %meta{:content => "ベビールック、おむつ趣味初心者に向けた入門書", :name => "description"}/
+    %meta{:content => "おむつ,オムツ,ベビールック,diaper,ABDL", :name => "keywords"}/
+    %meta{:content => "睦月　萌", :name => "author"}/
+    %link{:href => "./", :rel => "start"}/
+    = javascript_include_tag "all"
+    = stylesheet_link_tag "style.css"
+  %body
+    = yield
+    %ul.localNavigation
+      %li
+        %a{:href => "./"} 戻る
+    / ========================================
+    %h2.site 案内
+    %h3.navigationTitle メインナビゲーション
+    %ul.globalNavigation
+      %li
+        = link_to "トップページ", "index.html"
+      %li
+        おむつが欲しい
+        %ul
+          %li
+            通信販売のしかた
+          %li
+            店頭での買い方
+      %li
+        当て方を知りたい
+      %li
+        おむつ本が欲しい
+
+-# 要素サンプル
+-# http://az-store.nrym.org/download/web-template/original/11/sample
