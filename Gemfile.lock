@@ -134,7 +134,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2014.10)
       tzinfo (>= 1.0.0)
-    uber (0.0.11)
+    uber (0.0.12)
     uglifier (2.6.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
